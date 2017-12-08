@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="jp">
+    <head>
+        <meta charset="utf-8">
+        <script>
+            function run(){
+                location.href = 'mobileagent:///';
+            }
+        </script>
+    </head>
+    <body>
+
+        <a onclick="run()">
+            aタグ(hrefがない)
+        </a>
+        <br>
+
+        <a href="javascript:void(0)" onclick="run()">
+                aタグ(hrefにjavascript:void(0))
+            </a>
+            <br>
+        
+        <a href="#" onclick="run()">
+            aタグ(hrefに#)
+        </a>
+        <br>
+        <a href="mobileagent:///" >
+                aタグ(hrefにmobileagent)
+            </a>
+        <br>
+        <button onclick="run()">
+            aタグ(hrefに#)
+        </button>
+    </body>
+</html>
