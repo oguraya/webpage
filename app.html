@@ -3,33 +3,221 @@
     <head>
         <meta charset="utf-8">
         <script>
+<<<<<<< HEAD
+            function start(){
+                document.getElementById('dynamic_app_link').href='twitter://';
+=======
             function run(){
                 location.href = 'line:///';
+>>>>>>> 8b573383088c0c034c7fe483ef4fe2c66f430964
             }
         </script>
+        <style>
+            .ok{
+                background-color: LightGreen;
+            }
+            .wg{
+                background-color: lightyellow;
+            }
+            .ng{
+                background-color: LightSalmon;
+            }
+        </style>
     </head>
-    <body>
+    <body onload="start()">
+        <table border="1">
+            <caption>カスタムURLスキーム実行イベントハンドラ発生元HTML要素別実行結果</caption>
+            
+            <thead>
+                <tr>
+                    <th rowspan="2">No.</th>
+                    <th rowspan="2">HTML/JavaScript実装方法</th>
+                    <th rowspan="2">リンク(twitterアプリが起動します)</th>
+                    <th colspan="3">iOS版Safari</th>
+                    <th colspan="2">サードパーティブラウザ</th>
+                </tr>
+                <tr>
+                    <th>①他のページのリンクから新しいウィンドウで当ページを開いた場合</th>
+                    <th>②当ページを手動でリロードした場合</th>
+                    <th>③別のアプリ(メールアプリ)から当ページを開いた場合</th>
+                    <th>iOS版Chrome<br>(①〜③)</th>
+                    <th>iOS版Firefox<br>(①〜③)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>
+                        button要素をクリック時にJavascriptからカスタムURLスキーム起動<br>
+                        <code>&lt;button onclick=&quot;location.href=&#039;twitter://&#039;&quot;&gt;Click Me&lt;/button&gt;</code>
+                    </td>
+                    <td>
+                        <button onclick="location.href='twitter://';">
+                            Click Me
+                        </button>
+                        
+                    </td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ng"><p>変化なし</p></td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>
+                        type属性にbuttonを指定したinput要素をクリック時にJavascriptからカスタムURLスキーム起動<br>
+                        <code>&lt;button onclick=&quot;location.href=&#039;twitter://&#039;&quot;&gt;Click Me&lt;/button&gt;</code>
+                    </td>
+                    <td>
+                        <input type="button" onclick="location.href='twitter://';" value="Click Me">
+                    </td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ng"><p>変化なし</p></td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>
+                        href属性にhref無効化処理を入れたa要素をクリック時にJavascriptからカスタムURLスキーム起動<br>
+                        <code>&lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;location.href=&#039;twitter://&#039;&quot;&gt;Click Me&lt;/a&gt;</code>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" onclick="location.href='twitter://';">
+                            Click Me
+                        </a>
+                    </td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ng"><p>変化なし</p></td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>
+                        href属性が無いa要素をクリック時にJavascriptからカスタムURLスキーム起動<br>
+                        <code>&lt;a onclick=&quot;location.href=&#039;twitter://&#039;&quot;&gt;Click Me&lt;/a&gt;</code>
+                    </td>
+                    <td>
+                        <a onclick="location.href='twitter://';">
+                            Click Me
+                        </a>
+                    </td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ng"><p>変化なし</p></td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>
+                        href属性にページ内リンク('#')を指定したa要素をクリック時にJavascriptからカスタムURLスキーム起動後リンク機能を無効化<br>
+                        <code>&lt;a href=&quot;#&quot; onclick=&quot;location.href=&#039;twitter://&#039;;return false;&quot;&gt;Click Me&lt;/a&gt;</code>
+                    </td>
+                    <td>
+                        <a href="#" onclick="location.href='twitter://';return false;">
+                            Click Me
+                        </a>
+                    </td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ng"><p>変化なし</p></td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td>
+                        href属性にページ内リンク('#last')を指定したa要素をクリック時にJavascriptからカスタムURLスキーム起動<br>
+                        <code>&lt;a href=&quot;#last&quot; onclick=&quot;location.href=&#039;twitter://&#039;&quot;&gt;Click Me&lt;/a&gt;</code>
+                    </td>
+                    <td>
+                        <a href="#last" onclick="location.href='twitter://';">
+                            Click Me
+                        </a>
+                    </td>
+                    <td class="wg"><p>正常(ただし、先にページ内リンク先へ遷移したあと、アプリ起動ダイアログが表示される)</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ng"><p>ページ内リンク先へ遷移する</p></td>
+                </tr>
+                <tr>
+                    <th>7</th>
+                    <td>
+                        href属性にカスタムURLスキームを指定したa要素<br>
+                        <code>&lt;a href=&quot;twitter://&quot; &gt;Click Me&lt;/a&gt;</code>
+                    </td>
+                    <td>
+                        <a href="twitter://" >
+                            Click Me
+                        </a>
+                    </td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                </tr>
+                <tr>
+                    <th>8</th>
+                    <td>
+                        オンロード時にhref属性にカスタムURLスキームを動的に指定したa要素<br>
+                        <code>&lt;body onload=&quot;<br>
+                        &nbsp;&nbsp;document.getElementById(&#039;dynamic_app_link&#039;).<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;href=&#039;twitter://&#039;;<br>
+                        &quot;&gt;</code><br>
 
-        <a onclick="run()">
-            aタグ(hrefがない)
-        </a>
-        <br>
+                        <code>&lt;a href=&quot;javascript:void(0)&quot; id=&quot;dynamic_app_link&quot;&gt;</code>
+                        
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" id="dynamic_app_link">
+                            Click Me
+                        </a>
+                    </td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                    <td class="ok"><p>正常</p></td>
+                </tr>
+            </tbody>
 
-        <a href="javascript:void(0)" onclick="run()">
-                aタグ(hrefにjavascript:void(0))
-            </a>
-            <br>
-        
-        <a href="#" onclick="run()">
-            aタグ(hrefに#)
-        </a>
-        <br>
-        <a href="mobileagent:///" >
-                aタグ(hrefにmobileagent)
-            </a>
-        <br>
-        <button onclick="run()">
-            aタグ(hrefに#)
-        </button>
+        </table>
+
+        <ul>
+            <caption>補足</caption>
+            <li>アプリ起動確認ダイアログはiOS版Safariのみ発生。iOS版Chrome、iOS版版Firefoxなどのサードパーティのブラウザでは発生しない。</li>
+            <li>iOS版Firefoxはlocation.hrefによるカスタムURLスキームの起動が機能してない。</li>
+        </ul>
+
+        <ul>
+            <caption>実験環境</caption>
+            <li>iPhone 6s Plus / iOS 11.2(15C114)</li>
+            <li>iOS版Chrome 62.0.3202.70</li>
+            <li>iOS版Firefox 10.3(7934)</li>
+            
+        </ul>
+
+        <div>
+            <caption>まとめ</caption>
+            <p>
+                No.1〜7までの実験結果から、href属性に直接カスタムURLスキームを指定するのが最も安定した実装方法と推測される。
+                しかし、href属性に静的にカスタムURLスキームを指定するとiOS用カスタムURLスキームとAndroid用インテントURLの呼び分けが不可能である。
+            </p>
+            <p>
+                そこで、No.8ではiOS用カスタムURLスキームとAndroid用インテントURLとの呼び分けを可能とするため、オンロード時にa要素のhref属性を動的に書き換える方式を取った。
+            </p>
+        </div>
+    
+
+        <p>2017/12/09</p>
+
+        <a id="last"></a>        
     </body>
 </html>
