@@ -52,7 +52,7 @@
                         </button>
 
                     </td>
-                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページがクラッシュ(アプリは起動する)</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
@@ -67,7 +67,7 @@
                     <td>
                         <input type="button" onclick="location.href='twitter://';" value="Click Me">
                     </td>
-                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページがクラッシュ(アプリは起動する)</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
@@ -84,7 +84,7 @@
                             Click Me
                         </a>
                     </td>
-                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページがクラッシュ(アプリは起動する)</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
@@ -101,7 +101,7 @@
                             Click Me
                         </a>
                     </td>
-                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページがクラッシュ(アプリは起動する)</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
@@ -118,7 +118,7 @@
                             Click Me
                         </a>
                     </td>
-                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
+                    <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページがクラッシュ(アプリは起動する)</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
                     <td class="ok"><p>正常</p></td>
@@ -203,10 +203,11 @@
             <caption>まとめ</caption>
             <p>
                 No.1〜7までの実験結果から、href属性に直接カスタムURLスキームを指定するのが最も安定した実装方法と推測される。
-                しかし、href属性に静的にカスタムURLスキームを指定するとiOS用カスタムURLスキームとAndroid用インテントURLの呼び分けが不可能である。
+                しかし、href属性に静的にカスタムURLスキームを指定するとOSごとの呼び分けが不可能である。
             </p>
             <p>
-                そこで、No.8ではiOS用カスタムURLスキームとAndroid用インテントURLとの呼び分けを可能とするため、オンロード時にa要素のhref属性を動的に書き換える方式を取った。
+                そこで、No.8ではOSごとの呼び分けを可能とするため、オンロード時にa要素のhref属性を動的に書き換える方式を取った。
+                
             </p>
         </div>
 
