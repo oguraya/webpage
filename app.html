@@ -3,13 +3,8 @@
     <head>
         <meta charset="utf-8">
         <script>
-<<<<<<< HEAD
             function start(){
                 document.getElementById('dynamic_app_link').href='twitter://';
-=======
-            function run(){
-                location.href = 'line:///';
->>>>>>> 8b573383088c0c034c7fe483ef4fe2c66f430964
             }
         </script>
         <style>
@@ -27,7 +22,7 @@
     <body onload="start()">
         <table border="1">
             <caption>カスタムURLスキーム実行イベントハンドラ発生元HTML要素別実行結果</caption>
-            
+
             <thead>
                 <tr>
                     <th rowspan="2">No.</th>
@@ -55,7 +50,7 @@
                         <button onclick="location.href='twitter://';">
                             Click Me
                         </button>
-                        
+
                     </td>
                     <td class="ng"><p>アプリ起動確認ダイアログ応答後、ページクラッシュ(アプリは起動する)</p></td>
                     <td class="ok"><p>正常</p></td>
@@ -173,7 +168,7 @@
                         &quot;&gt;</code><br>
 
                         <code>&lt;a href=&quot;javascript:void(0)&quot; id=&quot;dynamic_app_link&quot;&gt;</code>
-                        
+
                     </td>
                     <td>
                         <a href="javascript:void(0)" id="dynamic_app_link">
@@ -201,7 +196,7 @@
             <li>iPhone 6s Plus / iOS 11.2(15C114)</li>
             <li>iOS版Chrome 62.0.3202.70</li>
             <li>iOS版Firefox 10.3(7934)</li>
-            
+
         </ul>
 
         <div>
@@ -214,10 +209,10 @@
                 そこで、No.8ではiOS用カスタムURLスキームとAndroid用インテントURLとの呼び分けを可能とするため、オンロード時にa要素のhref属性を動的に書き換える方式を取った。
             </p>
         </div>
-    
+
 
         <p>2017/12/09</p>
 
-        <a id="last"></a>        
+        <a id="last"></a>
     </body>
 </html>
