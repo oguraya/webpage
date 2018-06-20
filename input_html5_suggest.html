@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>UserAgent Sample</title>
+</head>
+<body>
+<input type="text" id="mailaddress" autocomplete="off" list="mailaddress_list">
+<datalist id="mailaddress_list">
+</datalist>
+
+
+
+
+<script>
+
+	function EventRegister(obj,eventname,callback){
+		if(obj.addEventListener) {
+		    obj.addEventListener(eventname, callback, false);
+		} else if(obj.attachEvent) {
+		    obj.attachEvent('on'+eventname, callback);
+		}
+	}
+	
+	var box = document.getElementById("mailaddress");
+	
+	EventRegister(box,'keyup', function(e){
+		var box_list = document.getElementById("mailaddress_list");
+		
+		var at = box.value.lastIndexOf("@");
+		if(at >= 0){
+			
+			var user = box.value.substring(0,at);
+			var domains = ['gmail.com', 'goo.ne.jp', 'yahoo.com', 'ybb.ne.jp','yahoo.ne.jp'];
+			
+			while(box_list.lastChild){
+				box_list.removeChild(box_list.lastChild);
+			}
+			for(var i=0;i<domains.length;i++){
+				var option = document.createElement('option');
+				option.value = user +"@"+ domains[i];
+				box_list.appendChild(option);
+			
+			}
+		}else{
+			while(box_list.lastChild){
+				box_list.removeChild(box_list.lastChild);
+			}
+			return;
+		}
+	});
+
+</script>
+</body>
+</html>

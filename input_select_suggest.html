@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>UserAgent Sample</title>
+</head>
+<style type="text/css">
+	#mailaddress{
+		
+	}
+	#mailaddress-suggest{
+		position:absolute;
+	}
+</style>
+<body>
+<input type="text" id="mailaddress" ><BR>
+<select id="mailaddress-suggest" size=5 style="display:none">
+
+</select>
+
+
+
+<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+
+
+
+<script>
+
+	function EventRegister(obj,eventname,callback){
+		if(obj.addEventListener) {
+		    obj.addEventListener(eventname, callback, false);
+		} else if(obj.attachEvent) {
+		    obj.attachEvent('on'+eventname, callback);
+		}
+	}
+	
+	var box = document.getElementById("mailaddress");
+	var box_list = document.getElementById("mailaddress-suggest");
+	
+	function updateSuggest(){
+		var val = box.value;
+		var at = val.lastIndexOf("@");
+		if(at >= 0){
+			
+			var user = val.substring(0,at);
+			var lastChar = val.slice(-1);
+			var inputDomain = val.substring(at+1);
+			var domains = ['gmail.com', 'goo.ne.jp', 'yahoo.com', 'ybb.ne.jp','yahoo.ne.jp'];
+			console.log(inputDomain);
+			while(box_list.lastChild){
+				box_list.removeChild(box_list.lastChild);
+			}
+			for(var i=0;i<domains.length;i++){
+				var domain = domains[i];
+				if(lastChar=='@' || domain.lastIndexOf(inputDomain,0) === 0){
+					var option = document.createElement('option');
+					option.value = user +"@"+ domain;
+					if (typeof(option.innerText) != 'undefined') {
+						option.innerText = option.value;
+					}else{
+						option.text = option.value;
+					}
+					box_list.appendChild(option);
+				}
+			
+			}
+		}else{
+			while(box_list.lastChild){
+				box_list.removeChild(box_list.lastChild);
+			}
+		}
+		
+		if(box_list.options.length>1){
+			box_list.style.display = "block";
+		}else{
+			box_list.style.display = "none";
+		}
+	}
+	
+	EventRegister(box,'keyup', function(e){
+		updateSuggest();
+		var keyCode = (window.Event) ? e.which : e.keyCode;
+		if(keyCode == 40){ // ↓キー
+			box_list.focus();
+			box_list.selectedIndex = 0;
+		}
+	});
+	EventRegister(box_list,'click', function(e){
+		box.value = box_list.options[box_list.selectedIndex].value;
+		box.focus();
+		box_list.selectedIndex = -1;
+		updateSuggest();
+	});
+	
+	EventRegister(box_list,'keyup', function(e){
+		var keyCode = (window.Event) ? e.which : e.keyCode;
+		if(keyCode == 13){ // エンターキー
+			box.value = box_list.options[box_list.selectedIndex].value;
+			box.focus();
+			box_list.selectedIndex = -1;
+			updateSuggest();
+		}
+	});
+
+	
+</script>
+</body>
+</html>
