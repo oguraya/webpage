@@ -16,7 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'GA-TRACKING_ID');
+  gtag('config', 'UA-133486045-1');
 </script>
     </head>
     <body>
@@ -31,6 +31,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         <button class="ga_all1">ボタン</a>
         <br>
-        <button class="ga_link3" onclick="ga('send','event','link','click','this.href',{'nonInteraction':1})">gaボタン</button>
+        <button class="ga_link3" onclick="ga('send','event','link','click','this.href',{'nonInteraction':1});">gaボタン</button>
+        <br>
+        <button class="ga_link3" onclick="gtag('event', 'click', {'event_category': 'link','event_label': 'this.href'});">gaボタン</button>
+        
     </body>
 </html>
