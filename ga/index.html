@@ -41,7 +41,7 @@ $(function(){
     var category = $("#category").val();
     var label = $("#label").val();
     
-    alert("gtag('event', '"+action+"', {'event_category': '+category+','event_label': '"+label+"', 'non_interaction': true});を実行します。");
+    alert("gtag('event', '"+action+"', {'event_category': '"+category+"','event_label': '"+label+"', 'non_interaction': true});を実行します。");
     gtag('event', action, {'event_category': category,'event_label': label, 'non_interaction': true});
   });
 })();
