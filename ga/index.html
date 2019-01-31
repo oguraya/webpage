@@ -28,9 +28,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   crossorigin="anonymous"></script>
 <script>
 $(function(){
-  $("#btn7").on('click',function(){alert(this.id)});
-  $("#btn8").on('click',function(){alert(this.id)});
-  $("#btn9").on('click',function(){alert(this.id)});
+  $("#btn4,#btn5,#btn6").on('click',function(){
+    alert("gtag('event', 'click', {'event_category': 'link','event_label': 'this.href', 'non_interaction': true});を実行します。");
+    gtag('event', 'click', {'event_category': 'link','event_label': 'this.href', 'non_interaction': true});
+  });
+  $("#btn7,#btn8,#btn9").on('click',function(){
+    alert("ga('send','event','link','click','this.href',{'nonInteraction':true});を実行します");
+    ga('send','event','link','click','this.href',{'nonInteraction':true});
+  });
 })();
 </script>
 
@@ -39,7 +44,7 @@ $(function(){
   <form action="next.html" method="get">
     <h1>GA 実験</h1>
     <div>
-      <h2>リンク(&lt;a&gt;)</h2>
+      <h2>Google Tag Manager</h2>
       
       <h3>外部リンク</h3>
       <ul>
@@ -55,31 +60,30 @@ $(function(){
         <li><a href="next.html">class="ga_all2"</a></li>
       </ul>
       
+      <h3>ボタン</h3>
+      <ul>
+        <li><button id="btn1" type="button">class無指定</button></li>
+        <li><button id="btn2" type="button" class="ga_link3">class="ga_link3"</button></li>
+        <li><button id="btn3" type="button" class="ga_all3">class="ga_all3"</button></li>
+      </ul>
+      
     </div>
     <div>
-      <h2>ボタン(&lt;button&gt;)</h2>
+      <h2>目標</h2>
       
-      <h3>type無指定ボタン</h3>
-      <ul>
-        <li><button id="btn1">class無指定</button></li>
-        <li><button id="btn2" class="ga_link3">class="ga_link3"</button></li>
-        <li><button id="btn3" class="ga_all3">class="ga_all3"</button></li>
-      </ul>
-      
-      <h3>type="button"ボタン</h3>
+      <h3>gtag</h3>
       <ul>
         <li><button id="btn4" type="button">class無指定</button></li>
-        <li><button id="btn5" type="button" class="ga_link3">class="ga_link3"</button></li>
-        <li><button id="btn6" type="button" class="ga_all3">class="ga_all3"</button></li>
+        <li><button id="btn5" type="button" class="ga_link4">class="ga_link4"</button></li>
+        <li><button id="btn6" type="button" class="ga_all4">class="ga_all4"</button></li>
       </ul>
       
-      <h3>type="button"ボタン alert版</h3>
+      <h3>ga</h3>
       <ul>
         <li><button id="btn7" type="button">class無指定</button></li>
-        <li><button id="btn8" type="button" class="ga_link3">class="ga_link3"</button></li>
-        <li><button id="btn9" type="button" class="ga_all3">class="ga_all3"</button></li>
+        <li><button id="btn8" type="button" class="ga_link5">class="ga_link5"</button></li>
+        <li><button id="btn9" type="button" class="ga_all5">class="ga_all5"</button></li>
       </ul>
-      
       
         
     </div>
