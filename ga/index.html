@@ -36,6 +36,14 @@ $(function(){
     alert("ga('send','event','link','click','this.href',{'nonInteraction':true});を実行します");
     ga('send','event','link','click','this.href',{'nonInteraction':true});
   });
+  $("#btn10,#btn11,#btn12").on('click',function(){
+    var action = $("#action").val();
+    var category = $("#category").val();
+    var label = $("#label").val();
+    
+    alert("gtag('event', '"+action+"', {'event_category': '+category+','event_label': '"+label+"', 'non_interaction': true});を実行します。");
+    gtag('event', action, {'event_category': category,'event_label': label, 'non_interaction': true});
+  });
 })();
 </script>
 
@@ -78,6 +86,7 @@ $(function(){
         <li><button id="btn6" type="button" class="ga_all4">class="ga_all4"</button></li>
       </ul>
       
+      
       <h3>ga</h3>
       <ul>
         <li><button id="btn7" type="button">class無指定</button></li>
@@ -85,7 +94,18 @@ $(function(){
         <li><button id="btn9" type="button" class="ga_all5">class="ga_all5"</button></li>
       </ul>
       
-        
+      <h3>gtag(可変)</h3>
+      <label for="action">アクション</label><input type="text" name="action" id="action" value="click"><br>
+      <label for="category">カテゴリ</label><input type="text" name="category" id="category" value="link"><br>
+      <label for="label">ラベル</label><input type="text"name="label" id="label" value="this.href"><br>
+      <ul>
+        <li><button id="btn10" type="button">class無指定</button></li>
+        <li><button id="btn11" type="button" class="ga_link6">class="ga_link6"</button></li>
+        <li><button id="btn12" type="button" class="ga_all6">class="ga_all6"</button></li>
+      </ul>
+      
+      
+      
     </div>
 
   </form>
