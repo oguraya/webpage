@@ -29,12 +29,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <br>
         <a href="app.html" class="ga_link2">app.html</a>
         
+        <form action="index.html" method="get">
         <button class="ga_all1">ボタン</a>
         <br>
- 
-        <button class="ga_link3" onclick="ga('send','event','link','click','this.href',{'nonInteraction':true});">gaボタン</button>
+        <button type="button" class="ga_link3" onclick="ga('send','event','link','click','this.href',{'nonInteraction':true});">gaボタン</button>
         <br>
-        <button class="ga_link3" onclick="gtag('event', 'click', {'event_category': 'link','event_label': 'this.href', 'non_interaction': true});">gaボタン</button>
-        
+        <button type="button" class="ga_link3" onclick="gtag('event', 'click', {'event_category': 'link','event_label': 'this.href', 'non_interaction': true});">gtagボタン</button>
+        </form>
     </body>
 </html>
